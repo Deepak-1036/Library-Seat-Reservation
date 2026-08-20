@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Resources | Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/resources.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+    <header class="dashboard-navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📖
+            </div>
+
+            <div class="logo-text">
+
+                <h2>Library</h2>
+
+                <p>Seat & Resource Reservation</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-user">
+
+            <div class="notification-icon">
+                🔔
+                <span class="notification-count">3</span>
+            </div>
+
+
+            <div class="user-info">
+
+                <div class="user-avatar" id="userAvatar">
+                    S
+                </div>
+
+                <div>
+
+                    <strong id="navUserName">
+                        Student
+                    </strong>
+
+                    <small>
+                        Student
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="dropdown-btn"
+                onclick="toggleUserMenu()">
+                ▼
+            </button>
+
+
+            <div
+                class="user-menu"
+                id="userMenu">
+
+                <a href="profile.htm">
+                    Profile
+                </a>
+
+                <button onclick="logout()">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="dashboard-layout">
+
+
+        <aside class="sidebar">
+
+            <div class="sidebar-menu">
+
+                <a
+                    href="dashboard.htm"
+                    class="sidebar-link">
+
+                    <span>⌂</span>
+                    Dashboard
+
+                </a>
+
+
+                <a
+                    href="resources.htm"
+                    class="sidebar-link active">
+
+                    <span>📚</span>
+                    Browse Resources
+
+                </a>
+
+
+                <a
+                    href="reservations.htm"
+                    class="sidebar-link">
+
+                    <span>📅</span>
+                    My Reservations
+
+                </a>
+
+
+                <a
+                    href="queue.htm"
+                    class="sidebar-link">
+
+                    <span>⏳</span>
+                    My Queue
+
+                </a>
+
+
+                <a
+                    href="history.htm"
+                    class="sidebar-link">
+
+                    <span>🕘</span>
+                    History
+
+                </a>
+
+
+                <a
+                    href="notifications.htm"
+                    class="sidebar-link">
+
+                    <span>🔔</span>
+                    Notifications
+
+                </a>
+
+
+                <a
+                    href="profile.htm"
+                    class="sidebar-link">
+
+                    <span>👤</span>
+                    Profile
+
+                </a>
+
+
+                <a
+                    href="help.htm"
+                    class="sidebar-link">
+
+                    <span>❓</span>
+                    Help & Support
+
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <button onclick="logout()">
+
+                    <span>↪</span>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <main class="dashboard-content">
+
+
+            <section class="resource-header">
+
+                <div>
+
+                    <p class="dashboard-label">
+                        LIBRARY RESOURCES
+                    </p>
+
+                    <h1>
+                        Browse Resources
+                    </h1>
+
+                    <p>
+                        Find and manage available library
+                        seats, rooms, books and equipment.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addResourceBtn"
+                    class="add-resource-btn"
+                    onclick="openAddModal()">
+                    + Add Resource
+                </button>
+
+            </section>
+
+
+            <section class="resource-controls">
+
+                <div class="search-box">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search resources..."
+                        oninput="displayResources()">
+
+                </div>
+
+
+                <select
+                    id="categoryFilter"
+                    onchange="displayResources()">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="Seat">
+                        Seats
+                    </option>
+
+                    <option value="Computer">
+                        Computers
+                    </option>
+
+                    <option value="Book">
+                        Books
+                    </option>
+
+                    <option value="Room">
+                        Study Rooms
+                    </option>
+
+                    <option value="Equipment">
+                        Equipment
+                    </option>
+
+                </select>
+
+
+                <select
+                    id="statusFilter"
+                    onchange="displayResources()">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Available">
+                        Available
+                    </option>
+
+                    <option value="Reserved">
+                        Reserved
+                    </option>
+
+                </select>
+
+            </section>
+
+
+            <div class="resource-summary">
+
+                <span>
+                    Showing
+                    <strong id="resourceCount">0</strong>
+                    resources
+                </span>
+
+            </div>
+
+
+            <section
+                class="resource-grid"
+                id="resourceGrid">
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <div
+        class="modal-overlay"
+        id="resourceModal">
+
+        <div class="resource-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="modalTitle">
+                        Add Resource
+                    </h2>
+
+                    <p>
+                        Enter the resource details below.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="close-modal"
+                    onclick="closeModal()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <form id="resourceForm">
+
+
+                <input
+                    type="hidden"
+                    id="resourceId">
+
+
+                <div class="form-group">
+
+                    <label for="resourceName">
+                        Resource Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="resourceName"
+                        placeholder="Example: Seat A-101"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="resourceCategory">
+                            Category
+                        </label>
+
+                        <select
+                            id="resourceCategory"
+                            required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Seat">
+                                Seat
+                            </option>
+
+                            <option value="Computer">
+                                Computer
+                            </option>
+
+                            <option value="Book">
+                                Book
+                            </option>
+
+                            <option value="Room">
+                                Study Room
+                            </option>
+                            <option value="Equipment">
+                                Equipment
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="resourceLocation">
+                            Location
+                        </label>
+                        <input
+                            type="text"
+                            id="resourceLocation"
+                            placeholder="Example: Floor 2"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resourceDescription">
+                        Description
+                    </label>
+                    <textarea
+                        id="resourceDescription"
+                        rows="3"
+                        placeholder="Enter a short description..."
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="resourceStatus">
+                        Status
+                    </label>
+                    <select
+                        id="resourceStatus">
+                        <option value="Available">
+                            Available
+                        </option>
+                        <option value="Reserved">
+                            Reserved
+                        </option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()">
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        class="save-resource-btn">
+                        Save Resource
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/resources.js"></script>
+</body>
+
+</html>
