@@ -1,0 +1,90 @@
+{
+  "clientName": "Thunder Client",
+  "collectionName": "Library Reservation API",
+  "collectionId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+  "dateExported": "2026-10-26T13:30:00.000Z",
+  "version": "1.2",
+  "folders": [
+    {
+      "_id": "f_auth",
+      "name": "1. Authentication",
+      "containerId": "",
+      "created": "2026-10-26T13:30:00.000Z"
+    },
+    {
+      "_id": "f_res",
+      "name": "2. Resources",
+      "containerId": "",
+      "created": "2026-10-26T13:30:00.000Z"
+    },
+    {
+      "_id": "f_reserve",
+      "name": "3. Reservations",
+      "containerId": "",
+      "created": "2026-10-26T13:30:00.000Z"
+    },
+    {
+      "_id": "f_queue",
+      "name": "4. Queue",
+      "containerId": "",
+      "created": "2026-10-26T13:30:00.000Z"
+    }
+  ],
+  "requests": [
+    {
+      "_id": "req_health",
+      "colId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+      "containerId": "",
+      "name": "Health Check",
+      "url": "http://localhost:5000/api/health",
+      "method": "GET"
+    },
+    {
+      "_id": "req_login",
+      "colId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+      "containerId": "f_auth",
+      "name": "Login (Student)",
+      "url": "http://localhost:5000/api/auth/login",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"student@library.com\",\n  \"password\": \"password123\"\n}"
+      }
+    },
+    {
+      "_id": "req_forgot",
+      "colId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+      "containerId": "f_auth",
+      "name": "Forgot Password",
+      "url": "http://localhost:5000/api/auth/forgot-password",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"student@library.com\"\n}"
+      }
+    },
+    {
+      "_id": "req_google",
+      "colId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+      "containerId": "f_auth",
+      "name": "Google Sign-In",
+      "url": "http://localhost:5000/api/auth/google",
+      "method": "POST",
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Alex Google User\",\n  \"email\": \"alex.google@gmail.com\",\n  \"googleId\": \"google_12345\"\n}"
+      }
+    },
+    {
+      "_id": "req_resources",
+      "colId": "b652882c-473d-4c3e-826a-9382b6c7a72d",
+      "containerId": "f_res",
+      "name": "Get Resources",
+      "url": "http://localhost:5000/api/resources",
+      "method": "GET"
+    }
+  ]
+}
