@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Library Reservation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon">📖</div>
+            <div class="logo-text">
+                <h2>Library</h2>
+                <p>
+                   Seat & Resource Reservation
+                </p>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="index.htm">Home</a>
+            <a href="resources.htm">Browse Resources</a>
+            <a href="about.htm">About Us</a>
+        </nav>
+        <div class="nav-buttons">
+            <a href="login.htm" class="login-btn active-button">Login</a>
+            <a href="register.htm" class="register-btn">Register</a>
+        </div>
+
+    </header>
+    <main class="auth-section">
+        <div class="auth-intro">
+            <p class="auth-label">WELCOME BACK!</p>
+            <h1>
+                Login to Your
+                <span>Account</span>
+            </h1>
+            <p class="auth-description">
+                Access your account to reserve seats,
+                manage your reservations, and enjoy a
+                smarter library experience.
+            </p>
+            <div class="study-illustration">
+                <div class="mini-shelf">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="mini-table">
+                    <div class="mini-laptop"></div>
+                </div>
+                <div class="mini-chair"></div>
+            </div>
+
+            <div class="security-box">
+                <div class="security-icon">🔒</div>
+                <div>
+                    <h3>
+                        Your data is safe with us.
+                    </h3>
+                    <p>
+                        Your account information is protected
+                        and used only for library services.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-card">
+            <div class="auth-card-icon">🔐</div>
+            <h2>Login</h2>
+            <p class="auth-card-subtitle">
+                Enter your credentials to continue
+            </p>
+
+            <div id="loginMessage" class="auth-message"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            👁
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+                        Remember me
+                    </label>
+
+                    <a href="#" onclick="openForgotPasswordModal(event); return false;">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+                    Login →
+                </button>
+            </form>
+
+            <div class="demo-accounts-box">
+                <p class="demo-title">💡 Quick Demo Logins (Click to Fill):</p>
+                <div class="demo-buttons">
+                    <button type="button" class="demo-chip" onclick="fillDemoLogin('student')">Student</button>
+                    <button type="button" class="demo-chip" onclick="fillDemoLogin('admin')">Admin</button>
+                    <button type="button" class="demo-chip" onclick="fillDemoLogin('faculty')">Faculty</button>
+                </div>
+            </div>
+
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+            <button
+                class="google-btn"
+                type="button"
+                onclick="openGoogleModal()"
+            >
+                <span>G</span>
+                Login with Google
+            </button>
+
+            <p class="account-question">
+                Don't have an account?
+                <a href="register.htm">
+                    Register Now
+                </a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="logo">
+                <div class="logo-icon">📖</div>
+                <div class="logo-text">
+                    <h2>Library</h2>
+                    <p>
+                        Seat & Resource Reservation
+                    </p>
+                </div>
+            </div>
+
+            <p class="footer-description">
+                Making library access simple,
+                smart, and student-friendly.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h3> Quick Links </h3>
+            <a href="index.htm"> Home </a>
+            <a href="resources.htm"> Browse Resources </a>
+            <a href="about.htm"> About Us </a>
+        </div>
+
+        <div class="footer-column">
+            <h3> Support </h3>
+            <a href="help.htm"> Help & Support </a>
+            <a href="help.htm"> FAQ </a>
+            <a href="help.htm"> Contact Us </a>
+        </div>
+        <div class="footer-column">
+            <h3> Connect With Us </h3>
+            <div class="social-icons">
+                <span>f</span>
+                <span>◎</span>
+                <span>𝕏</span>
+                <span>✉</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        © 2026 Library Seat & Resource Reservation System.
+        All rights reserved.
+    </div>
+
+    <!-- Interactive Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="auth-modal-overlay">
+        <div class="auth-modal-card">
+            <button class="auth-modal-close" onclick="closeForgotPasswordModal()">✕</button>
+            <div class="auth-modal-header">
+                <span class="modal-icon">🔑</span>
+                <h2>Reset Your Password</h2>
+                <p>Verify via OTP & update your credentials</p>
+            </div>
+
+            <div id="forgotModalAlert" class="auth-modal-alert"></div>
+
+            <!-- Step 1: Request OTP -->
+            <form id="forgotStep1Form">
+                <div class="form-group">
+                    <label for="forgotEmail">Registered Email</label>
+                    <input type="email" id="forgotEmail" placeholder="Enter your registered email" required>
+                </div>
+                <button type="submit" id="sendOtpBtn" class="auth-modal-btn">Send Verification OTP →</button>
+            </form>
+
+            <!-- Step 2: Enter OTP & New Password -->
+            <form id="forgotStep2Form" style="display: none;">
+                <div id="otpHiglightBox" class="otp-highlight-box">
+                    <p>Testing OTP Code (From Server):</p>
+                    <div id="generatedOtpDisplay" class="otp-number">------</div>
+                    <button type="button" class="otp-copy-btn" onclick="copyOtpToInput()">📋 Fill OTP</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="resetOtp">Enter 6-Digit OTP</label>
+                    <input type="text" id="resetOtp" placeholder="6-digit code" maxlength="6" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" placeholder="Minimum 6 characters" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" placeholder="Repeat new password" required>
+                </div>
+
+                <button type="submit" id="resetPassBtn" class="auth-modal-btn">Confirm & Reset Password →</button>
+                <p style="text-align: center; margin-top: 12px; font-size: 12px;">
+                    <a href="#" onclick="backToForgotStep1(event)" style="color: #5736e8;">← Back to enter email</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Interactive Google Sign-In Modal -->
+    <div id="googleAuthModal" class="auth-modal-overlay">
+        <div class="auth-modal-card">
+            <button class="auth-modal-close" onclick="closeGoogleModal()">✕</button>
+            <div class="auth-modal-header">
+                <span class="modal-icon">🌐</span>
+                <h2>Sign In with Google</h2>
+                <p>Select a Google account to authenticate via OAuth</p>
+            </div>
+
+            <div id="googleModalAlert" class="auth-modal-alert"></div>
+
+            <div class="google-profiles-list">
+                <div class="google-profile-option" onclick="selectGoogleProfile('Alex Johnson', 'alex.student@gmail.com', 'student')">
+                    <div class="google-profile-avatar">A</div>
+                    <div class="google-profile-info">
+                        <div class="google-profile-name">Alex Johnson (Student)</div>
+                        <div class="google-profile-email">alex.student@gmail.com</div>
+                    </div>
+                    <span style="font-size: 12px; color: #5736e8; font-weight: bold;">Select →</span>
+                </div>
+
+                <div class="google-profile-option" onclick="selectGoogleProfile('Dr. Eleanor Smith', 'faculty.eleanor@gmail.com', 'faculty')">
+                    <div class="google-profile-avatar" style="background: #2563eb;">E</div>
+                    <div class="google-profile-info">
+                        <div class="google-profile-name">Dr. Eleanor Smith (Faculty)</div>
+                        <div class="google-profile-email">faculty.eleanor@gmail.com</div>
+                    </div>
+                    <span style="font-size: 12px; color: #2563eb; font-weight: bold;">Select →</span>
+                </div>
+
+                <div class="google-profile-option" onclick="selectGoogleProfile('Admin Staff', 'admin.library@gmail.com', 'admin')">
+                    <div class="google-profile-avatar" style="background: #7c2d12;">A</div>
+                    <div class="google-profile-info">
+                        <div class="google-profile-name">Admin Staff (Library Admin)</div>
+                        <div class="google-profile-email">admin.library@gmail.com</div>
+                    </div>
+                    <span style="font-size: 12px; color: #7c2d12; font-weight: bold;">Select →</span>
+                </div>
+            </div>
+
+            <div class="divider" style="margin: 16px 0;">
+                <span>or use custom Google account</span>
+            </div>
+
+            <form id="customGoogleForm">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <input type="text" id="customGoogleName" placeholder="Full Name" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <input type="email" id="customGoogleEmail" placeholder="your.name@gmail.com" required>
+                </div>
+                <button type="submit" class="auth-modal-btn">Continue with Custom Google Account →</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js?v=4"></script>
+</body>
+</html>

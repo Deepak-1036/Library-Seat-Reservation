@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Queue | Library</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/queue.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+
+</head>
+
+<body>
+
+    <header class="dashboard-navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📖
+            </div>
+
+            <div class="logo-text">
+
+                <h2>Library</h2>
+
+                <p>Seat & Resource Reservation</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-user">
+
+            <div class="notification-icon">
+                🔔
+                <span class="notification-count">3</span>
+            </div>
+
+
+            <div class="user-info">
+
+                <div class="user-avatar" id="userAvatar">
+                    S
+                </div>
+
+                <div>
+
+                    <strong id="navUserName">
+                        Student
+                    </strong>
+
+                    <small>
+                        Student
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="dropdown-btn"
+                onclick="toggleUserMenu()">
+
+                ▼
+
+            </button>
+
+
+            <div
+                class="user-menu"
+                id="userMenu">
+
+                <a href="profile.htm">
+                    Profile
+                </a>
+
+                <button onclick="logout()">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-menu">
+
+                <a href="dashboard.htm"
+                   class="sidebar-link">
+
+                    <span>⌂</span>
+                    Dashboard
+
+                </a>
+
+
+                <a href="resources.htm"
+                   class="sidebar-link">
+
+                    <span>📚</span>
+                    Browse Resources
+
+                </a>
+
+
+                <a href="reservations.htm"
+                   class="sidebar-link">
+
+                    <span>📅</span>
+                    My Reservations
+
+                </a>
+
+
+                <a href="queue.htm"
+                   class="sidebar-link active">
+
+                    <span>⏳</span>
+                    My Queue
+
+                </a>
+
+
+                <a href="history.htm"
+                   class="sidebar-link">
+
+                    <span>🕘</span>
+                    History
+
+                </a>
+
+
+                <a href="notifications.htm"
+                   class="sidebar-link">
+
+                    <span>🔔</span>
+                    Notifications
+
+                </a>
+
+
+                <a href="profile.htm"
+                   class="sidebar-link">
+
+                    <span>👤</span>
+                    Profile
+
+                </a>
+
+
+                <a href="help.htm"
+                   class="sidebar-link">
+
+                    <span>❓</span>
+                    Help & Support
+
+                </a>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <button onclick="logout()">
+
+                    <span>↪</span>
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+        <main class="dashboard-content">
+
+            <section class="queue-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 25px;">
+                <div>
+                    <p class="dashboard-label">PRIORITY QUEUE</p>
+                    <h1>My Queue</h1>
+                    <p>Track your position for unavailable resources or join the waiting list.</p>
+                </div>
+                <button type="button" onclick="openJoinQueueModal()" style="background: #5736e8; color: white; border: none; padding: 12px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; box-shadow: 0 4px 12px rgba(87,54,232,0.25); display: flex; align-items: center; gap: 8px;">
+                    <span>+</span> Join Waiting List
+                </button>
+            </section>
+
+            <section class="queue-stats">
+
+
+                <div class="queue-stat">
+
+                    <div class="queue-stat-icon purple">
+                        ⏳
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Queue Requests
+                        </p>
+
+                        <h2 id="totalQueue">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="queue-stat">
+
+                    <div class="queue-stat-icon orange">
+                        #1
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Highest Position
+                        </p>
+
+                        <h2 id="highestPosition">
+                            -
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="queue-stat">
+
+                    <div class="queue-stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Served
+                        </p>
+
+                        <h2 id="servedQueue">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <div class="queue-info">
+
+                <strong>
+                    💡 How Priority Queue Works
+                </strong>
+
+                <p>
+                    Requests are arranged according to priority.
+                    When priorities are equal, the earlier request
+                    is served first.
+                </p>
+
+            </div>
+
+            <section
+                class="queue-list"
+                id="queueList">
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/queue.js"></script>
+
+
+    <!-- Join Waiting List Modal -->
+    <div id="joinQueueModal" class="auth-modal-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(16,12,38,0.65); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; z-index:99999;">
+        <div class="auth-modal-card" style="background:#ffffff; width:100%; max-width:440px; border-radius:16px; padding:30px; position:relative; box-shadow:0 20px 45px rgba(27,20,69,0.22); border:1px solid #ebe7f7;">
+            <button class="auth-modal-close" onclick="closeJoinQueueModal()" style="position:absolute; top:18px; right:20px; background:#f1effa; border:none; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center;">✕</button>
+            <div style="text-align:center; margin-bottom:20px;">
+                <span style="font-size:36px;">⏳</span>
+                <h2 style="margin:6px 0 4px; color:#1e1b4b; font-size:22px;">Join Waiting List</h2>
+                <p style="margin:0; font-size:13px; color:#6c6a85;">Get automatically reserved when a slot opens</p>
+            </div>
+
+            <div id="joinQueueAlert" style="display:none; padding:10px 14px; border-radius:8px; font-size:13px; margin-bottom:14px; line-height:1.4;"></div>
+
+            <form id="joinQueueForm">
+                <div class="form-group" style="margin-bottom:14px;">
+                    <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Select Resource</label>
+                    <select id="queueResourceSelect" required style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; background:white;">
+                        <option value="">Loading resources...</option>
+                    </select>
+                </div>
+
+                
+                <div style="display:flex; gap:12px; margin-bottom:14px;">
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Date</label>
+                        <input type="date" id="queueDateInput" required style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; box-sizing:border-box;">
+                    </div>
+                    <div style="flex:1;">
+                        <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Preferred Time</label>
+                        <input type="time" id="queueTimeInput" required style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; box-sizing:border-box;">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:14px;">
+                    <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Duration</label>
+                    <select id="queueDurationSelect" style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; background:white;">
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="4">4 Hours</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-bottom:14px;">
+                    <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Purpose / Reason</label>
+                    <input type="text" id="queueReasonInput" placeholder="e.g. Exam preparation, Research, Project" required style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; box-sizing:border-box;">
+                </div>
+
+                <div class="form-group" style="margin-bottom:18px;">
+                    <label style="display:block; font-size:13px; font-weight:600; color:#252548; margin-bottom:6px;">Urgency / Priority</label>
+                    <select id="queuePrioritySelect" style="width:100%; padding:10px 12px; border:1px solid #d9d5f0; border-radius:8px; font-size:14px; background:white;">
+                        <option value="1">Standard (Normal study session)</option>
+                        <option value="2">Medium (Same-day assignment/exam)</option>
+                        <option value="3">High (Faculty / Urgent academic request)</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submitJoinQueueBtn" style="width:100%; padding:12px; background:#5736e8; color:white; border:none; border-radius:8px; font-weight:bold; font-size:15px; cursor:pointer;">
+                    Confirm & Join Queue →
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

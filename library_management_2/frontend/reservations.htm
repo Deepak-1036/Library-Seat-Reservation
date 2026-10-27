@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Reservations | Library</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+    <header class="dashboard-navbar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                📖
+            </div>
+            <div class="logo-text">
+                <h2>Library</h2>
+                <p>Seat & Resource Reservation</p>
+            </div>
+        </div>
+        <div class="dashboard-user">
+            <a href="notifications.htm" class="notification-icon-link">
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-count">3</span>
+                </div>
+            </a>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    S
+                </div>
+                <div>
+                    <strong id="navUserName">
+                        Student
+                    </strong>
+                    <small id="navUserRole">
+                        Student
+                    </small>
+                </div>
+            </div>
+            <button class="dropdown-btn" onclick="toggleUserMenu()">
+                ▼
+            </button>
+            <div class="user-menu" id="userMenu">
+                <a href="profile.htm">
+                    Profile
+                </a>
+                <button onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="dashboard.htm" class="sidebar-link">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+                <a href="resources.htm" class="sidebar-link">
+                    <span>📚</span>
+                    Browse Resources
+                </a>
+                <a href="reservations.htm" class="sidebar-link active">
+                    <span>📅</span>
+                    My Reservations
+                </a>
+                <a href="queue.htm" class="sidebar-link">
+                    <span>⏳</span>
+                    My Queue
+                </a>
+                <a href="history.htm" class="sidebar-link">
+                    <span>🕘</span>
+                    History
+                </a>
+                <a href="notifications.htm" class="sidebar-link">
+                    <span>🔔</span>
+                    Notifications
+                </a>
+                <a href="profile.htm" class="sidebar-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+                <a href="help.htm" class="sidebar-link">
+                    <span>❓</span>
+                    Help & Support
+                </a>
+            </div>
+            <div class="sidebar-bottom">
+                <button onclick="logout()">
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+        <main class="dashboard-content">
+            <section class="reservation-header">
+                <div>
+                    <p class="dashboard-label">
+                        RESERVATION MANAGEMENT
+                    </p>
+                    <h1>
+                        My Reservations
+                    </h1>
+                    <p>
+                        View and manage your library bookings.
+                    </p>
+                </div>
+                <button type="button" class="new-reservation-btn" onclick="openReservationModal()">
+                    + New Reservation
+                </button>
+            </section>
+            <section class="reservation-stats">
+
+                <div class="reservation-stat">
+                    <div class="reservation-stat-icon purple">
+                        📅
+                    </div>
+                    <div>
+                        <p>
+                            Total Reservations
+                        </p>
+                        <h2 id="totalReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+                <div class="reservation-stat">
+                    <div class="reservation-stat-icon green">
+                        ✓
+                    </div>
+                    <div>
+                        <p>
+                            Active
+                        </p>
+                        <h2 id="activeReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+                <div class="reservation-stat">
+                    <div class="reservation-stat-icon orange">
+                        ⏳
+                    </div>
+                    <div>
+                        <p>
+                            Pending
+                        </p>
+                        <h2 id="pendingReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+                <div class="reservation-stat">
+                    <div class="reservation-stat-icon blue">
+                        ✓
+                    </div>
+                    <div>
+                        <p>
+                            Completed
+                        </p>
+                        <h2 id="completedReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+            </section>
+            <section class="reservation-controls">
+                <div class="reservation-search">
+                    🔎
+                    <input type="text" id="reservationSearch" placeholder="Search reservations..."
+                        oninput="displayReservations()">
+                </div>
+                <select id="reservationFilter" onchange="displayReservations()">
+                    <option value="all">
+                        All Reservations
+                    </option>
+                    <option value="active">
+                        Active
+                    </option>
+                    <option value="pending">
+                        Pending
+                    </option>
+                    <option value="completed">
+                        Completed
+                    </option>
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+
+                </select>
+            </section>
+            <section class="reservations-container" id="reservationsContainer">
+            </section>
+        </main>
+    </div>
+    <div class="modal-overlay" id="reservationModal">
+        <div class="reservation-modal">
+            <div class="modal-header">
+                <div>
+                    <h2>
+                        Make a Reservation
+                    </h2>
+                    <p>
+                        Select a resource, date and time slot.
+                    </p>
+                </div>
+                <button class="close-modal" onclick="closeReservationModal()">
+                    ×
+                </button>
+            </div>
+
+            <div id="reservationModalMessage" class="modal-alert" style="display:none;"></div>
+
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label for="reservationResource">
+                        Resource / Seat
+                    </label>
+                    <select id="reservationResource" required>
+                        <option value="">
+                            Select a resource
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reservationDate">
+                            Date
+                        </label>
+                        <input type="date" id="reservationDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationTime">
+                            Start Time
+                        </label>
+                        <input type="time" id="reservationTime" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reservationDuration">
+                        Duration
+                    </label>
+                    <select id="reservationDuration" required>
+                        <option value="1">
+                            1 Hour
+                        </option>
+                        <option value="2">
+                            2 Hours
+                        </option>
+                        <option value="3">
+                            3 Hours
+                        </option>
+                        <option value="4">
+                            4 Hours
+                        </option>
+                    </select>
+                </div>
+
+                <div id="resourceSlotsInfo" class="slots-info" style="display:none;"></div>
+
+                <div class="reservation-note">
+                    <strong>
+                        ℹ Time Slot Policy
+                    </strong>
+                    <p>
+                        Reservations are booked on an hourly basis. You can reserve any seat that is not already occupied during your requested hours.
+                    </p>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" onclick="closeReservationModal()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="confirm-btn">
+                        Confirm Reservation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/reservations.js"></script>
+
+    <!-- Conflict Auto-Join Waitlist Popup Modal -->
+    <div id="conflictQueueModal" class="auth-modal-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(16,12,38,0.7); backdrop-filter:blur(5px); display:none; align-items:center; justify-content:center; z-index:100000;">
+        <div class="auth-modal-card" style="background:#ffffff; width:100%; max-width:460px; border-radius:18px; padding:32px 28px; position:relative; box-shadow:0 20px 50px rgba(0,0,0,0.3); border:1px solid #fee2e2; text-align:center;">
+            <div style="width:64px; height:64px; background:#fef2f2; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:30px; border:2px solid #fecaca;">
+                ⚠️
+            </div>
+            <h2 style="color:#991b1b; font-size:22px; margin:0 0 8px;">Time Slot Already Booked!</h2>
+            <p id="conflictModalDetails" style="color:#4b5563; font-size:14px; line-height:1.5; margin:0 0 20px;">
+                This seat/resource is already reserved for this time. Would you like to join the Priority Waiting List for this slot?
+            </p>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:14px; margin-bottom:22px; text-align:left; font-size:13px;">
+                <div style="margin-bottom:6px;"><span style="color:#64748b;">Resource:</span> <strong id="conflictResName" style="color:#1e293b;">-</strong></div>
+                <div style="margin-bottom:6px;"><span style="color:#64748b;">Date & Time:</span> <strong id="conflictDateTime" style="color:#1e293b;">-</strong></div>
+                <div><span style="color:#64748b;">Auto-Action:</span> <span style="color:#16a34a; font-weight:600;">You will get automatically booked if vacated!</span></div>
+            </div>
+
+            <div id="conflictActionAlert" style="display:none; padding:10px; border-radius:8px; font-size:13px; margin-bottom:14px;"></div>
+
+            <div style="display:flex; gap:12px;">
+                <button type="button" onclick="closeConflictModal()" style="flex:1; padding:12px; background:#f1f5f9; color:#475569; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
+                    Choose Other Time
+                </button>
+                <button type="button" id="joinConflictQueueBtn" onclick="confirmJoinQueueFromConflict()" style="flex:1.5; padding:12px; background:#5736e8; color:white; border:none; border-radius:8px; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(87,54,232,0.3);">
+                    ⚡ Join Waiting List
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
