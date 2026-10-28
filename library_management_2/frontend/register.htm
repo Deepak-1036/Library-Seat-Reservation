@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Library Reservation</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-icon"> 📖 </div>
+            <div class="logo-text">
+                <h2>Library</h2>
+                <p>
+                    Seat & Resource Reservation
+                </p>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="index.htm"> Home </a>
+            <a href="resources.htm"> Browse Resources </a>
+            <a href="about.htm"> About Us </a>
+
+        </nav>
+        <div class="nav-buttons">
+            <a href="login.htm" class="login-btn">
+                Login
+            </a>
+            <a href="register.htm" class="register-btn active-button">
+                Register
+            </a>
+        </div>
+    </header>
+
+    <main class="auth-section">
+        <div class="auth-intro">
+            <p class="auth-label">
+                JOIN OUR LIBRARY
+            </p>
+            <h1>
+                Create Your
+                <span>Account</span>
+            </h1>
+            <p class="auth-description">
+                Create an account to reserve library seats,
+                access resources, manage your reservations,
+                and join the priority queue.
+            </p>
+
+            <div class="study-illustration">
+                <div class="mini-shelf">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="mini-table">
+                    <div class="mini-laptop"></div>
+                </div>
+                <div class="mini-chair"></div>
+            </div>
+            <div class="security-box">
+                <div class="security-icon">
+                    ✓
+                </div>
+                <div>
+                    <h3>
+                        Quick & Easy Registration
+                    </h3>
+                    <p>
+                        Create your library account in
+                        just a few simple steps.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-card">
+            <div class="auth-card-icon">
+                📝
+            </div>
+            <h2>
+                Create Account
+            </h2>
+            <p class="auth-card-subtitle">
+                Fill in your details to get started
+            </p>
+
+            <div id="registerMessage" class="auth-message">
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">
+                        Full Name
+                    </label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentId">
+                        Student ID
+                    </label>
+                    <input type="text" id="studentId" placeholder="Enter your student ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">
+                        Password
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="registerPassword" placeholder="Create a password (min. 6 characters)" required>
+                        <button type="button" class="show-password" id="toggleRegPassBtn" onclick="toggleRegisterPassword()">
+                            👁
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                        <button type="button" class="show-password" id="toggleConfirmPassBtn" onclick="toggleConfirmPassword()">
+                            👁
+                        </button>
+                    </div>
+                </div>
+
+                <label class="remember-me terms">
+                    <input type="checkbox" id="terms" required>
+                    <span>
+                        I agree to the library's
+                        terms and conditions.
+                    </span>
+                </label>
+
+                <button type="submit" class="auth-submit">
+                    Create Account →
+                </button>
+            </form>
+            <p class="account-question">
+                Already have an account?
+                <a href="login.htm">
+                    Login
+                </a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-brand">
+            <div class="logo">
+                <div class="logo-icon">
+                    📖
+                </div>
+                <div class="logo-text">
+                    <h2>Library</h2>
+                    <p>
+                        Seat & Resource Reservation
+                    </p>
+                </div>
+            </div>
+
+            <p class="footer-description">
+                Making library access simple,
+                smart, and student-friendly.
+            </p>
+        </div>
+        <div class="footer-column">
+            <h3>
+                Quick Links
+            </h3>
+            <a href="index.htm">
+                Home
+            </a>
+            <a href="resources.htm">
+                Browse Resources
+            </a>
+            <a href="about.htm">
+                About Us
+            </a>
+        </div>
+
+        <div class="footer-column">
+            <h3>
+                Support
+            </h3>
+            <a href="help.htm">
+                Help & Support
+            </a>
+            <a href="help.htm">
+                FAQ
+            </a>
+            <a href="help.htm">
+                Contact Us
+            </a>
+        </div>
+        <div class="footer-column">
+            <h3>
+                Connect With Us
+            </h3>
+            <div class="social-icons">
+                <span>f</span>
+                <span>◎</span>
+                <span>𝕏</span>
+                <span>✉</span>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        © 2026 Library Seat & Resource Reservation System.
+        All rights reserved.
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js?v=4"></script>
+</body>
+
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Library Reservation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <header class="dashboard-navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                📖
+            </div>
+            <div class="logo-text">
+                <h2>Library</h2>
+                <p>Seat & Resource Reservation</p>
+            </div>
+        </div>
+        <div class="dashboard-user">
+            <a href="notifications.htm">
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-count">3</span>
+                </div>
+            </a>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    N
+                </div>
+                <div>
+                    <strong id="navUserName">
+                        Student
+                    </strong>
+                    <small>
+                        Student
+                    </small>
+                </div>
+            </div>
+            <button class="dropdown-btn" onclick="toggleUserMenu()">
+                ▼
+            </button>
+            <div class="user-menu" id="userMenu">
+                <a href="profile.htm">
+                    Profile
+                </a>
+                <button onclick="logout()">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="dashboard.htm" class="sidebar-link active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+                <a href="resources.htm" class="sidebar-link">
+                    <span>📚</span>
+                    Browse Resources
+                </a>
+                <a href="reservations.htm" class="sidebar-link">
+                    <span>📅</span>
+                    My Reservations
+                </a>
+                <a href="queue.htm" class="sidebar-link">
+                    <span>⏳</span>
+                    My Queue
+                </a>
+                <a href="history.htm" class="sidebar-link">
+                    <span>🕘</span>
+                    History
+                </a>
+                <a href="notifications.htm" class="sidebar-link">
+                    <span>🔔</span>
+                    Notifications
+                </a>
+                <a href="profile.htm" class="sidebar-link">
+                    <span>👤</span>
+                    Profile
+                </a>
+                <a href="help.htm" class="sidebar-link">
+                    <span>❓</span>
+                    Help & Support
+                </a>
+            </div>
+            <div class="sidebar-bottom">
+                <button onclick="logout()">
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+        <main class="dashboard-content">
+            <section class="welcome-section">
+                <div>
+                    <p class="dashboard-label">
+                        STUDENT DASHBOARD
+                    </p>
+                    <h1>
+                        Welcome back,
+                        <span id="welcomeName">
+                            Student
+                        </span>!
+                    </h1>
+                    <p>
+                        Manage your library reservations
+                        and resources from one place.
+                    </p>
+                </div>
+                <a href="resources.htm" class="reserve-button">
+                    + Make a Reservation
+                </a>
+            </section>
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        📅
+                    </div>
+                    <div>
+                        <p>
+                            Active Reservations
+                        </p>
+                        <h2 id="activeReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        📚
+                    </div>
+                    <div>
+                        <p>
+                            Resources Reserved
+                        </p>
+                        <h2 id="resourcesReserved">
+                            0
+                        </h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        ⏳
+                    </div>
+                    <div>
+                        <p>
+                            Queue Position
+                        </p>
+                        <h2 id="queuePosition">
+                            —
+                        </h2>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        🕘
+                    </div>
+                    <div>
+                        <p>
+                            Completed
+                        </p>
+                        <h2 id="completedReservations">
+                            0
+                        </h2>
+                    </div>
+                </div>
+            </section>
+            <section class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>
+                                Upcoming Reservations
+                            </h2>
+                            <p>
+                                Your next library bookings
+                            </p>
+                        </div>
+                        <a href="reservations.htm">
+                            View All
+                        </a>
+                    </div>
+                    <div id="upcomingReservations" class="reservation-list">
+                        <div class="empty-state">
+                            <div>
+                                📅
+                            </div>
+                            <h3>
+                                No upcoming reservations
+                            </h3>
+                            <p>
+                                Reserve a seat or resource
+                                to see it here.
+                            </p>
+                            <a href="resources.htm" class="small-button">
+                                Browse Resources
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div>
+                            <h2>
+                                Quick Actions
+                            </h2>
+                            <p>
+                                Frequently used options
+                            </p>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <a href="resources.htm" class="quick-action">
+                            <div class="quick-icon">
+                                🔎
+                            </div>
+                            <div>
+                                <strong>
+                                    Browse Resources
+                                </strong>
+                                <p>
+                                    Find available seats
+                                    and resources
+                                </p>
+                            </div>
+                            <span>
+                                →
+                            </span>
+                        </a>
+                        <a href="reservations.htm" class="quick-action">
+                            <div class="quick-icon">
+                                📅
+                            </div>
+                            <div>
+                                <strong>
+                                    My Reservations
+                                </strong>
+                                <p>
+                                    Manage your bookings
+                                </p>
+                            </div>
+                            <span>
+                                →
+                            </span>
+                        </a>
+                        <a href="queue.htm" class="quick-action">
+                            <div class="quick-icon">
+                                ⏳
+                            </div>
+                            <div>
+                                <strong>
+                                    Check Queue
+                                </strong>
+                                <p>
+                                    View your priority
+                                    position
+                                </p>
+                            </div>
+                            <span>
+                                →
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="dashboard-card resources-preview">
+                <div class="card-heading">
+                    <div>
+                        <h2>
+                            Available Resources
+                        </h2>
+                        <p>
+                            Quickly find something to reserve
+                        </p>
+                    </div>
+                    <a href="resources.htm">
+                        View All
+                    </a>
+                </div>
+                <div class="resource-mini-grid">
+                    <div class="resource-mini-card">
+                        <div class="resource-icon">
+                            💺
+                        </div>
+                        <div>
+                            <h3>
+                                Study Seats
+                            </h3>
+                            <p>
+                                24 seats available
+                            </p>
+                        </div>
+                        <a href="resources.htm">
+                            Reserve
+                        </a>
+                    </div>
+                    <div class="resource-mini-card">
+                        <div class="resource-icon">
+                            💻
+                        </div>
+                        <div>
+                            <h3>
+                                Computer Lab
+                            </h3>
+                            <p>
+                                8 systems available
+                            </p>
+                        </div>
+                        <a href="resources.htm">
+                            Reserve
+                        </a>
+                    </div>
+                    <div class="resource-mini-card">
+                        <div class="resource-icon">
+                            📖
+                        </div>
+                        <div>
+                            <h3>
+                                Reference Books
+                            </h3>
+                            <p>
+                                15 available
+                            </p>
+                        </div>
+                        <a href="resources.htm">
+                            Reserve
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

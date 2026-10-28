@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "c1f834a9-826d-4912-bc78-999332211999",
+		"name": "Library Seat & Resource Reservation API",
+		"description": "API collection for testing all endpoints of the Library Reservation System (Continuous Evaluation #2)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "testOtp",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Health & Info",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "health"]
+						}
+					}
+				},
+				{
+					"name": "API Documentation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api",
+							"host": ["{{baseUrl}}"],
+							"path": ["api"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Authentication",
+			"item": [
+				{
+					"name": "Register Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set('authToken', jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.student@library.com\",\n  \"studentId\": \"STU-9901\",\n  \"password\": \"student123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Login (Student)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set('authToken', jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"student@library.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Login (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set('authToken', jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"admin@library.com\",\n  \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Login with Google (OAuth)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set('authToken', jsonData.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Alex Google User\",\n  \"email\": \"alex.google@gmail.com\",\n  \"googleId\": \"google_oauth_test_12345\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/google",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "google"]
+						}
+					}
+				},
+				{
+					"name": "Forgot Password (Request OTP)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.otp) {",
+									"    pm.collectionVariables.set('testOtp', jsonData.otp);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"student@library.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/forgot-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "forgot-password"]
+						}
+					}
+				},
+				{
+					"name": "Reset Password with OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"student@library.com\",\n  \"otp\": \"{{testOtp}}\",\n  \"newPassword\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/reset-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "reset-password"]
+						}
+					}
+				},
+				{
+					"name": "Get Current User Profile (JWT Protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/me",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "me"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Resources",
+			"item": [
+				{
+					"name": "Get All Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/resources",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "resources"]
+						}
+					}
+				},
+				{
+					"name": "Filter Resources (Seats Only)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/resources?category=Seat",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "resources"],
+							"query": [
+								{
+									"key": "category",
+									"value": "Seat"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Resource (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Study Seat C-301\",\n  \"category\": \"Seat\",\n  \"location\": \"Floor 3 - Silent Study\",\n  \"description\": \"Quiet desk with power socket\",\n  \"status\": \"Available\",\n  \"capacity\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/resources",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "resources"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Reservations",
+			"item": [
+				{
+					"name": "Get Occupied Slots for Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/slots?resourceId=1&date=2026-10-30",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "reservations", "slots"],
+							"query": [
+								{
+									"key": "resourceId",
+									"value": "1"
+								},
+								{
+									"key": "date",
+									"value": "2026-10-30"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceId\": 1,\n  \"date\": \"2026-10-30\",\n  \"time\": \"14:00\",\n  \"duration\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "reservations"]
+						}
+					}
+				},
+				{
+					"name": "Get My Reservations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations?mine=true",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "reservations"],
+							"query": [
+								{
+									"key": "mine",
+									"value": "true"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Queue Management",
+			"item": [
+				{
+					"name": "Join Queue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"resourceId\": 1,\n  \"reason\": \"Need study seat for exam preparation\",\n  \"priority\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/queue",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "queue"]
+						}
+					}
+				},
+				{
+					"name": "Get Queue Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/queue?mine=true",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "queue"],
+							"query": [
+								{
+									"key": "mine",
+									"value": "true"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "6. User Profile & Notifications",
+			"item": [
+				{
+					"name": "Get User Profile & Stats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/profile",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Get Notifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/notifications",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "notifications"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
