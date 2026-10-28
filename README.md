@@ -70,3 +70,41 @@ The server starts on `http://localhost:5000`.
 | **Auth**       | Registration, login, JWT, Google OAuth, OTP reset |
 | **User**       | Profile management and admin user controls        |
 
+## Endpoints
+
+"endpoints": {
+        "auth": [
+            "POST /api/auth/register",
+            "POST /api/auth/login",
+            "POST /api/auth/google",
+            "POST /api/auth/forgot-password",
+            "POST /api/auth/reset-password",
+            "GET  /api/auth/me"
+        ],
+        "resources": [
+            "GET    /api/resources",
+            "GET    /api/resources/:id",
+            "POST   /api/resources (Admin)",
+            "PUT    /api/resources/:id (Admin)",
+            "DELETE /api/resources/:id (Admin)"
+        ],
+        "reservations": [
+            "GET /api/reservations",
+            "GET /api/reservations/slots",
+            "POST /api/reservations",
+            "PUT /api/reservations/:id/cancel"
+        ],
+        "queue": [
+            "GET    /api/queue",
+            "POST   /api/queue",
+            "DELETE /api/queue/:id"
+        ],
+        "users": [
+            "GET /api/users/profile",
+            "PUT /api/users/profile",
+            "GET /api/users/notifications",
+            "PUT /api/users/notifications/:id/read",
+            "PUT /api/users/notifications/read-all",
+            "GET /api/users (Admin)"
+        ]
+    }
