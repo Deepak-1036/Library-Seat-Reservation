@@ -1,0 +1,660 @@
+.public-navbar {
+
+    height: 72px;
+
+    background: white;
+
+    border-bottom: 1px solid #e8e5f2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 55px;
+
+}
+
+
+ .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 35px;
+}
+
+.logo-text h2 {
+    font-size: 21px;
+    color: #15153d;
+}
+
+.logo-text p {
+    font-size: 11px;
+    color: #666680;
+}
+
+
+.public-nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+
+.public-nav a {
+
+    text-decoration: none;
+
+    color: #55556c;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+
+.public-nav a:hover {
+
+    color: #5736e8;
+
+}
+
+
+.public-nav a.active {
+
+    color: #5736e8;
+
+    font-weight: bold;
+
+}
+
+
+.public-nav .register-link {
+
+    background: #5736e8;
+
+    color: white;
+
+    padding: 10px 17px;
+
+    border-radius: 7px;
+
+}
+
+
+.public-nav .register-link:hover {
+
+    background: #4625d0;
+
+    color: white;
+
+}
+
+
+.about-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 35px 25px;
+
+}
+
+
+.about-hero {
+
+    background: white;
+
+    border: 1px solid #e8e5f2;
+
+    border-radius: 12px;
+
+    padding: 45px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.about-label {
+
+    color: #5736e8;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.about-hero h1 {
+
+    color: #252548;
+
+    font-size: 32px;
+
+    line-height: 1.25;
+
+    max-width: 700px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.about-hero h1 span {
+
+    color: #5736e8;
+
+}
+
+
+.about-hero p {
+
+    color: #77778c;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    max-width: 720px;
+
+}
+
+
+.about-section {
+
+    display: grid;
+
+    grid-template-columns: 1.4fr 0.8fr;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.about-text,
+.about-visual {
+
+    background: white;
+
+    border: 1px solid #e8e5f2;
+
+    border-radius: 12px;
+
+    padding: 28px;
+
+}
+
+
+.about-text h2 {
+
+    color: #28284b;
+
+    font-size: 21px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.about-text p {
+
+    color: #77778c;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin-bottom: 12px;
+
+}
+
+
+.about-visual {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #f3f0ff,
+        #ffffff
+    );
+
+}
+
+
+.visual-icon {
+
+    width: 75px;
+
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eeeaff;
+
+    border-radius: 18px;
+
+    font-size: 38px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.about-visual h3 {
+
+    color: #302d55;
+
+    font-size: 17px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.about-visual p {
+
+    color: #88889a;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+}
+
+
+/* 
+   SECTION HEADING
+*/
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.section-heading span {
+
+    color: #5736e8;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.section-heading h2 {
+
+    color: #28284b;
+
+    font-size: 23px;
+
+    margin: 7px 0;
+
+}
+
+
+.section-heading p {
+
+    color: #88889a;
+
+    font-size: 12px;
+
+}
+
+
+/*
+   FEATURES
+*/
+
+.features-section {
+
+    margin-bottom: 30px;
+
+}
+
+
+.features-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.feature-card {
+
+    background: white;
+
+    border: 1px solid #e8e5f2;
+
+    border-radius: 10px;
+
+    padding: 22px;
+
+    transition: 0.2s;
+
+}
+
+
+.feature-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(70, 40, 180, 0.08);
+
+}
+
+
+.feature-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eeeaff;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.feature-card h3 {
+
+    color: #30304f;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.feature-card p {
+
+    color: #858599;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+/*
+   HOW IT WORKS
+*/
+
+.how-section {
+
+    background: white;
+
+    border: 1px solid #e8e5f2;
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.steps {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.step {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: flex-start;
+
+}
+
+
+.step-number {
+
+    min-width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eeeaff;
+
+    color: #5736e8;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.step h3 {
+
+    color: #333353;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.step p {
+
+    color: #88889a;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/*
+   FOOTER
+*/
+
+.about-footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 20px;
+
+    color: #88889a;
+
+    font-size: 11px;
+
+}
+
+
+.about-footer strong {
+
+    color: #5736e8;
+
+}
+
+
+/*
+   RESPONSIVE
+*/
+
+@media (max-width: 900px) {
+
+    .public-navbar {
+
+        padding: 0 25px;
+
+    }
+
+
+    .public-nav {
+
+        gap: 15px;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .steps {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        row-gap: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .public-navbar {
+
+        height: auto;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .public-nav {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+
+    .about-container {
+
+        padding: 20px 15px;
+
+    }
+
+
+    .about-hero {
+
+        padding: 28px;
+
+    }
+
+
+    .about-hero h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    .about-section {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

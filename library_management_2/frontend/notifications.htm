@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Notifications | Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notifications.css">
+
+</head>
+<body>
+
+    <header class="top-header">
+
+        <div class="brand">
+            <a href="index.htm" class="brand-link">
+                <div class="brand-icon">
+                    📖
+                </div>
+                <div class="brand-text">
+                    <h1>
+                        Library
+                    </h1>
+                    <p>
+                        Seat & Resource Reservation
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="header-right">
+
+            <a href="notifications.htm">
+            <div          
+                class="header-notification"
+            >
+                🔔
+                <span
+                    class="notification-count"
+                    
+                >
+                    3
+                </span>
+            </div>
+            </a>
+
+            <div
+                class="user-profile"
+                onclick="toggleUserMenu()"
+            >
+                <div
+                    class="user-avatar"
+                    id="userAvatar"
+                >
+                    U
+                </div>
+
+                <div class="user-info">
+                    <strong id="navUserName">
+                        User
+                    </strong>
+                    <span id="navUserRole">
+                        Student
+                    </span>
+                </div>
+
+                <span class="dropdown-arrow">
+                    ▼
+                </span>
+            </div>
+
+            <div
+                class="user-menu"
+                id="userMenu"
+            >
+
+                <a href="profile.htm">
+                    👤 Profile
+                </a>
+
+
+                <a
+                    href="#"
+                    onclick="logout(); return false;"
+                >
+                    ↪ Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="page-layout">
+
+
+        <aside class="sidebar">
+            <nav>
+                <a href="dashboard.htm">
+                    🏠
+                    <span>
+                        Dashboard
+                    </span>
+                </a>
+
+                <a href="resources.htm">
+                    📚
+                    <span>
+                        Browse Resources
+                    </span>
+                </a>
+
+                <a href="reservations.htm">
+                    🗓️
+                    <span>
+                        My Reservations
+                    </span>
+                </a>
+
+                <a href="queue.htm">
+                    ⏳
+                    <span>
+                        My Queue
+                    </span>
+                </a>
+
+                <a href="history.htm">
+                    🕘
+                    <span>
+                        History
+                    </span>
+                </a>
+
+                <a
+                    href="notifications.htm"
+                    class="active"
+                >
+                    🔔
+                    <span>
+                        Notifications
+                    </span>
+                </a>
+
+                <a href="profile.htm">
+                    👤
+                    <span>
+                        Profile
+                    </span>
+                </a>
+
+                <a href="help.htm">
+                    ❓
+                    <span>
+                        Help & Support
+                    </span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a
+                    href="#"
+                    onclick="logout(); return false;"
+                    class="logout-link"
+                >
+                    ↪ Logout
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content notifications-page">
+
+            <div class="notifications-page-header">
+                <span class="notifications-page-label">
+                    UPDATES
+                </span>
+                <h1>
+                    Notifications
+                </h1>
+                <p>
+                    Stay updated with your reservations,
+                    queue requests and library activities.
+                </p>
+            </div>
+
+            <section class="notifications-toolbar">
+                <div class="notification-summary">
+                    <span
+                        class="notification-summary-count"
+                        id="notificationCount"
+                    >
+                        3
+                    </span>
+                    <span>
+                        New Notifications
+                    </span>
+                </div>
+
+                <button
+                    type="button"
+                    class="mark-all-btn"
+                    onclick="markAllAsRead()"
+                >
+                    ✓ Mark All as Read
+                </button>
+            </section>
+
+            <section
+                class="notifications-list"
+                id="notificationsList"
+            >
+                <div
+                    class="notification-item unread"
+                    data-read="false"
+                >
+                    <div class="notification-icon">
+                        ✅
+                    </div>
+
+                    <div class="notification-content">
+                        <h3>
+                            Reservation Confirmed
+                        </h3>
+
+                        <span class="notification-time">
+                            Just now
+                        </span>
+                        <p>
+                            Your library seat reservation has
+                            been successfully confirmed.
+                        </p>
+
+                    </div>
+
+                    <div class="unread-dot"></div>
+
+                    <button
+                        type="button"
+                        class="notification-read-btn"
+                        onclick="markAsRead(this)"
+                        title="Mark as read"
+                    >
+                        ✓
+                    </button>
+
+                </div>
+
+                <div
+                    class="notification-item unread"
+                    data-read="false"
+                >
+
+                    <div class="notification-icon">
+                        ⏳
+                    </div>
+                    <div class="notification-content">
+                        <h3>
+                            Queue Update
+                        </h3>
+
+                        <span class="notification-time">
+                            1 hour ago
+                        </span>
+
+                        <p>
+                            You are currently next in line
+                            for your requested library resource.
+                        </p>
+
+                    </div>
+
+
+                    <div class="unread-dot"></div>
+
+
+                    <button
+                        type="button"
+                        class="notification-read-btn"
+                        onclick="markAsRead(this)"
+                        title="Mark as read"
+                    >
+                        ✓
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    class="notification-item unread"
+                    data-read="false"
+                >
+
+                    <div class="notification-icon">
+                        🔔
+                    </div>
+
+
+                    <div class="notification-content">
+
+                        <h3>
+                            Reservation Reminder
+                        </h3>
+
+
+                        <span class="notification-time">
+                            2 hours ago
+                        </span>
+
+
+                        <p>
+                            Your reserved seat is scheduled
+                            for today. Please arrive on time.
+                        </p>
+
+                    </div>
+
+
+                    <div class="unread-dot"></div>
+
+
+                    <button
+                        type="button"
+                        class="notification-read-btn"
+                        onclick="markAsRead(this)"
+                        title="Mark as read"
+                    >
+                        ✓
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    class="notification-item read"
+                    data-read="true"
+                >
+
+                    <div class="notification-icon">
+                        📚
+                    </div>
+
+
+                    <div class="notification-content">
+
+                        <h3>
+                            Library Resources Updated
+                        </h3>
+
+
+                        <span class="notification-time">
+                            Yesterday
+                        </span>
+
+
+                        <p>
+                            New books and study resources have
+                            been added to the library.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <div
+                class="notifications-empty"
+                id="notificationsEmpty"
+            >
+
+                <div class="notifications-empty-icon">
+                    🔔
+                </div>
+
+
+                <h2>
+                    No Notifications
+                </h2>
+
+
+                <p>
+                    You are all caught up.
+                </p>
+
+            </div>
+
+
+
+            <footer class="notifications-footer">
+
+                <span>
+                    Library Seat & Resource Reservation
+                </span>
+
+
+                <strong>
+                    •
+                </strong>
+
+
+                <span>
+                    Notifications
+                </span>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+<script src="js/api.js"></script>
+    <script src="js/notifications.js"></script>
+</body>
+
+</html>

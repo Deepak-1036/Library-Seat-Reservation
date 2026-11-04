@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Help & Support | Library</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/help.css"
+    >
+
+</head>
+
+
+<body>
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            <a
+                href="index.htm"
+                class="brand-link"
+            >
+
+                <div class="brand-icon">
+                    📖
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>Library</h1>
+
+                    <p>
+                        Seat & Resource Reservation
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="notification-icon">
+
+                🔔
+
+                <span class="notification-count">
+                    3
+                </span>
+
+            </div>
+
+
+            <div
+                class="user-profile"
+                onclick="toggleUserMenu()"
+            >
+
+                <div
+                    class="user-avatar"
+                    id="userAvatar"
+                >
+                    U
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="navUserName">
+                        User
+                    </strong>
+
+                    <span id="navUserRole">
+                        Student
+                    </span>
+
+                </div>
+
+
+                <span class="dropdown-arrow">
+                    ▼
+                </span>
+
+            </div>
+
+
+            <div
+                class="user-menu"
+                id="userMenu"
+            >
+
+                <a href="profile.htm">
+                    👤 Profile
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+                    ↪ Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page-layout">
+
+
+        <aside class="sidebar">
+
+            <nav>
+
+                <a href="dashboard.htm">
+                    🏠
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a href="resources.htm">
+                    📚
+                    <span>Browse Resources</span>
+                </a>
+
+
+                <a href="reservations.htm">
+                    🗓️
+                    <span>My Reservations</span>
+                </a>
+
+
+                <a href="queue.htm">
+                    ⏳
+                    <span>My Queue</span>
+                </a>
+
+
+                <a href="history.htm">
+                    🕘
+                    <span>History</span>
+                </a>
+
+
+                <a href="notifications.htm">
+                    🔔
+                    <span>Notifications</span>
+                </a>
+
+
+                <a href="profile.htm">
+                    👤
+                    <span>Profile</span>
+                </a>
+
+
+                <a
+                    href="help.htm"
+                    class="active"
+                >
+                    ❓
+                    <span>Help & Support</span>
+                </a>
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                    class="logout-link"
+                >
+                    ↪ Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <main class="help-page">
+
+
+            <section class="help-page-header">
+
+                <span class="help-page-label">
+                    SUPPORT
+                </span>
+
+                <h1>
+                    Help & Support
+                </h1>
+
+                <p>
+                    Find answers to common questions
+                    and get help with your library account.
+                </p>
+
+            </section>
+
+
+            <section class="help-search-card">
+
+                <div class="help-search-icon">
+                    🔍
+                </div>
+
+
+                <div class="help-search-content">
+
+                    <h2>
+                        How can we help you?
+                    </h2>
+
+                    <p>
+                        Search for answers to your questions.
+                    </p>
+
+
+                    <div class="help-search">
+
+                        <input
+                            type="text"
+                            id="helpSearch"
+                            placeholder="Search for help..."
+                            onkeyup="searchFAQ()"
+                        >
+
+                        <button
+                            type="button"
+                            onclick="searchFAQ()"
+                        >
+                            Search
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="help-section">
+
+                <div class="section-title">
+
+                    <span>
+                        QUICK HELP
+                    </span>
+
+                    <h2>
+                        Common Topics
+                    </h2>
+
+                </div>
+
+
+                <div class="help-topic-grid">
+
+
+                    <a
+                        href="#reservations"
+                        class="help-topic-card"
+                    >
+
+                        <div class="topic-icon">
+                            🗓️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Reservations
+                            </h3>
+
+                            <p>
+                                Learn how to reserve seats
+                                and library resources.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#queue"
+                        class="help-topic-card"
+                    >
+
+                        <div class="topic-icon">
+                            ⏳
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Queue System
+                            </h3>
+
+                            <p>
+                                Understand how the waiting
+                                queue works.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#account"
+                        class="help-topic-card"
+                    >
+
+                        <div class="topic-icon">
+                            👤
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Account
+                            </h3>
+
+                            <p>
+                                Manage your profile and
+                                account information.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#password"
+                        class="help-topic-card"
+                    >
+
+                        <div class="topic-icon">
+                            🔐
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Password & Security
+                            </h3>
+
+                            <p>
+                                Get help changing your
+                                password and securing your account.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <section class="help-section faq-section">
+
+                <div class="section-title">
+
+                    <span>
+                        FAQ
+                    </span>
+
+                    <h2>
+                        Frequently Asked Questions
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+
+                    <div
+                        class="faq-item"
+                        id="reservations"
+                    >
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                How do I reserve a seat?
+                            </span>
+
+                            <span class="faq-arrow">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Go to the Browse Resources page,
+                                select the seat or resource you want,
+                                choose an available date and time,
+                                and confirm your reservation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="faq-item"
+                        id="queue"
+                    >
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                What happens when a resource is unavailable?
+                            </span>
+
+                            <span class="faq-arrow">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+                                If a resource is currently unavailable,
+                                you can join the queue. You will receive
+                                a notification when the resource becomes
+                                available.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="faq-item"
+                        id="account"
+                    >
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                How can I update my profile?
+                            </span>
+
+                            <span class="faq-arrow">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Open your Profile page and click
+                                "Edit Profile". You can update your
+                                personal information from there.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="faq-item"
+                        id="password"
+                    >
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                How do I change my password?
+                            </span>
+
+                            <span class="faq-arrow">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Go to your Profile page and select
+                                "Change Password" under the
+                                Password & Security section.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button
+                            class="faq-question"
+                            onclick="toggleFAQ(this)"
+                        >
+
+                            <span>
+                                Where can I see my previous reservations?
+                            </span>
+
+                            <span class="faq-arrow">
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Open the History page from the sidebar
+                                to view your completed and previous
+                                reservations.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <section class="contact-support">
+
+                <div class="contact-icon">
+                    💬
+                </div>
+
+
+                <div class="contact-content">
+
+                    <span>
+                        STILL NEED HELP?
+                    </span>
+
+                    <h2>
+                        Contact Library Support
+                    </h2>
+
+                    <p>
+                        If you couldn't find the answer you were
+                        looking for, our support team can help.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="mailto:support@library.com"
+                    class="contact-btn"
+                >
+                    Contact Support
+                </a>
+
+            </section>
+
+
+            <footer class="help-footer">
+
+                <span>
+                    Library Seat & Resource Reservation
+                </span>
+
+                <strong>
+                    •
+                </strong>
+
+                <span>
+                    Help & Support
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+<script src="js/help.js"></script>
+
+</body>
+
+</html>

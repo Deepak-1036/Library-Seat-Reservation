@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>History | Library</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/history.css"
+    >
+
+</head>
+
+
+<body>
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            <a
+                href="index.htm"
+                class="brand-link"
+            >
+
+                <div class="brand-icon">
+                    📖
+                </div>
+
+                <div class="brand-text">
+
+                    <h1>Library</h1>
+
+                    <p>
+                        Seat & Resource Reservation
+                    </p>
+
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="notification-icon">
+
+                🔔
+
+                <span class="notification-count">
+                    3
+                </span>
+
+            </div>
+
+
+            <div
+                class="user-profile"
+                onclick="toggleUserMenu()"
+            >
+
+                <div
+                    class="user-avatar"
+                    id="userAvatar"
+                >
+                    U
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="navUserName">
+                        User
+                    </strong>
+
+                    <span id="navUserRole">
+                        Student
+                    </span>
+
+                </div>
+
+
+                <span class="dropdown-arrow">
+                    ▼
+                </span>
+
+            </div>
+
+
+            <div
+                class="user-menu"
+                id="userMenu"
+            >
+
+                <a href="profile.htm">
+                    👤 Profile
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                >
+                    ↪ Logout
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="page-layout">
+
+        <aside class="sidebar">
+
+            <nav>
+
+                <a href="dashboard.htm">
+                    🏠
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a href="resources.htm">
+                    📚
+                    <span>Browse Resources</span>
+                </a>
+
+
+                <a href="reservations.htm">
+                    🗓️
+                    <span>My Reservations</span>
+                </a>
+
+
+                <a href="queue.htm">
+                    ⏳
+                    <span>My Queue</span>
+                </a>
+
+
+                <a
+                    href="history.htm"
+                    class="active"
+                >
+                    🕘
+                    <span>History</span>
+                </a>
+
+
+                <a href="notifications.htm">
+                    🔔
+                    <span>Notifications</span>
+                </a>
+
+
+                <a href="profile.htm">
+                    👤
+                    <span>Profile</span>
+                </a>
+
+
+                <a href="help.htm">
+                    ❓
+                    <span>Help & Support</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="#"
+                    onclick="logout()"
+                    class="logout-link"
+                >
+                    ↪ Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+        <main class="main-content history-page">
+
+            <div class="history-page-header">
+
+                <span class="history-page-label">
+                    ACTIVITY
+                </span>
+
+                <h1>
+                    Reservation History
+                </h1>
+
+                <p>
+                    View your previous library seat and resource reservations.
+                </p>
+
+            </div>
+
+            <section class="history-filter-card">
+
+                <div class="history-filter-info">
+
+                    <span class="filter-icon">
+                        🕘
+                    </span>
+
+                    <div>
+
+                        <span class="card-label">
+                            RESERVATION RECORDS
+                        </span>
+
+                        <h2>
+                            Your Activity
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="history-filter">
+
+                    <label for="historyFilter">
+                        Filter
+                    </label>
+
+                    <select id="historyFilter">
+
+                        <option value="all">
+                            All Reservations
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                        <option value="cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+            <section class="history-card">
+
+                <div class="history-card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            PAST RESERVATIONS
+                        </span>
+
+                        <h2>
+                            Reservation Records
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="history-list"
+                    id="historyList"
+                >
+
+                    <div
+                        class="history-item"
+                        data-status="completed"
+                    >
+
+                        <div class="history-icon">
+                            🪑
+                        </div>
+
+
+                        <div class="history-details">
+
+                            <h3>
+                                Reading Hall - Seat A12
+                            </h3>
+
+                            <p>
+                                August 20, 2026
+                            </p>
+
+                            <span>
+                                10:00 AM - 12:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="history-status completed">
+                            Completed
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="history-item"
+                        data-status="completed"
+                    >
+
+                        <div class="history-icon">
+                            💻
+                        </div>
+
+
+                        <div class="history-details">
+
+                            <h3>
+                                Computer Lab - PC 08
+                            </h3>
+
+                            <p>
+                                August 18, 2026
+                            </p>
+
+                            <span>
+                                2:00 PM - 4:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="history-status completed">
+                            Completed
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="history-item"
+                        data-status="cancelled"
+                    >
+
+                        <div class="history-icon">
+                            📚
+                        </div>
+
+
+                        <div class="history-details">
+
+                            <h3>
+                                Discussion Room - Room 03
+                            </h3>
+
+                            <p>
+                                August 15, 2026
+                            </p>
+
+                            <span>
+                                11:00 AM - 1:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="history-status cancelled">
+                            Cancelled
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="history-item"
+                        data-status="completed"
+                    >
+
+                        <div class="history-icon">
+                            🪑
+                        </div>
+
+
+                        <div class="history-details">
+
+                            <h3>
+                                Silent Study Area - Seat B07
+                            </h3>
+
+                            <p>
+                                August 12, 2026
+                            </p>
+
+                            <span>
+                                5:00 PM - 7:00 PM
+                            </span>
+
+                        </div>
+
+
+                        <div class="history-status completed">
+                            Completed
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="history-empty"
+                        id="historyEmpty"
+                        style="display: none;"
+                    >
+
+                        <span>
+                            🕘
+                        </span>
+
+                        <h3>
+                            No reservations found
+                        </h3>
+
+                        <p>
+                            There are no records matching the selected filter.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <footer class="history-footer">
+
+                <span>
+                    Library Seat & Resource Reservation
+                </span>
+
+                <strong>
+                    •
+                </strong>
+
+                <span>
+                    Reservation History
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+<script src="js/api.js"></script>
+    <script src="js/history.js"></script>
+
+</body>
+
+</html>
